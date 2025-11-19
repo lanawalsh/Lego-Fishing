@@ -39,6 +39,7 @@ Analyse each block in the HSV color space to discover the dominant colour. The H
 ## Current Status
 
 ✅ All three pipeline stages integrated and working
+
 Working on: Enhancing handling of touching blocks and implementing classification system
 
 ## Output
