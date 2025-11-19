@@ -1,19 +1,50 @@
 # Lego-Fishing
-Project Aim: The aim of our project is to create a program that sorts lego pieces based on shape and colour using image processing. We chose this project because it offers a fun and visually engaging way to apply key image processing principles in a practical, real-world context. As a team of big Lego fans, we wanted to combine our love of building and creativity with technical problem-solving.
 
-## Individual Work
-<h4>Segmentation</h4>
-<h5>Loredana Bura</h5>
-<p>Segmentation is the first step </p>
-<h4>Colour Classification</h4>
-<h5>Alannah Walsh</h5>
-<p>This section focuses on analysing each segmented LEGO block to determine its dominant colour.The process begins by converting the image from RGB to HSV (Hue, Saturation, Value) color space, which is more robust to lighting variations than RGB since similar colors have comparable hue values regardless of brightness changes. </p>
-<p>For each isolated brick, the program creates a bounding box and applies a precise mask to analyse only the pixels belonging to that specific piece, ignoring the background. The system then compares the HSV values of each pixel against predefined color ranges (such as red, blue, yellow, green) and counts how many pixels fall within each range. The color with the highest pixel count above a minimum threshold is designated as the brick's dominant color, while colors below the threshold are ignored to prevent misclassification from shadows or reflections.</p> 
-<p>Finally, the results are displayed visually through bar charts showing the distribution of detected colors, allowing for easy verification of the classification accuracy.</p>
-<h4>Feature Extraction</h4>
-<h5>Gráinne Bannister</h5>
-<p>...</p>
+## Project Overview
 
+A program that sorts LEGO pieces based on shape and colour using image processing techniques. We chose this project because it offers a fun and visually engaging way to apply key image processing principles in a practical, real-world context. As a team of big Lego fans, we wanted to combine our love of building and creativity with technical problem-solving.
 
+## How It Works
+
+The system processes LEGO blocks through a three-stage pipeline:
+
+1. **Segmentation** - Detects and isolates individual blocks from the background
+2. **Color Classification** - Determines the dominant colour of each block
+3. **Feature Extraction** - Identifies structural characteristics (e.g., number of studs)
+
+## Pipeline Components
+
+### 1. Segmentation 
+**Loredana Bura**
+
+Detects and separates individual LEGO blocks via adaptive thresholding, contour detection, and binary masking.  Adaptive thresholding responds to changing illumination conditions across the image, making detection more reliable.  Produces individual segmented blocks against a white background.
+
+ ### 2. Color Classification 
+ **Alannah Walsh**
+
+Analyse each block in the HSV color space to discover the dominant colour. The HSV color system is more resistant to lighting fluctuations than RGB, as identical colours retain comparable hue values regardless of brightness.  Pixel values are compared to predetermined colour ranges and the number of pixels for each colour is counted.  The results are displayed using bar charts.  This component also aids in the separation of different-coloured touching blocks.
+
+ ### 3. Feature Extraction 
+ **Gráinne Bannister**
+
+ Uses the Hough Circle Transform to detect and count circular studs on each block.  The Hough Circle Transform recognises circular structures by identifying edges and locating points that form circles with specific radii.  This information is used to categorise blocks by type.
+
+## Limitations
+
+- LEGO blocks cannot be white
+- Blocks must be flat (not at an angle or overlapping)
+- Blocks cannot be upside down
+- Touching blocks must be different colours (same-colour touching blocks cannot be separated)
+
+## Current Status
+
+✅ All three pipeline stages integrated and working
+Working on: Enhancing handling of touching blocks and implementing classification system
 
 ## Output
+
+- Isolated mask for each block
+- Dominant colour classification
+- Number of circular studs
+- Visual colour distribution charts
+
